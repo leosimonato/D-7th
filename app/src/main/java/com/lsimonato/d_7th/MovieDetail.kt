@@ -40,7 +40,7 @@ class MovieDetail : AppCompatActivity() {
 
 //        buscaFilme(cIdFilme)
     }
-
+/*
     private fun buscaFilme(idFilme: String?) {
         thread {
             var filme = try {
@@ -70,7 +70,7 @@ class MovieDetail : AppCompatActivity() {
             }
         }
     }
-
+*/
     fun like(view: View) {
         if (btnCurtiuA.background.equals(R.drawable.likea)) {
             btnCurtiuA.setBackgroundResource(R.drawable.likeb)
