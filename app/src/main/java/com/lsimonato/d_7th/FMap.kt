@@ -1,8 +1,12 @@
 package com.lsimonato.d_7th
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.widget.Toast
-import okhttp3.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import java.io.BufferedInputStream
 
 const val LANG = "language=pt-BR"
 const val TMDB_API_KEY = "?api_key=6061bdd1ff3a878d27953844acdf3779"
@@ -17,6 +21,14 @@ fun getRequest(getUrl: String): String {
     var request = Request.Builder().url(getUrl).get().build()
     var xResp = client.newCall(request).execute()
     var cResp = xResp.body()?.string()!!
+    return cResp
+}
+
+fun getImage(getUrl: String): Bitmap {
+    var client = OkHttpClient()
+    var request = Request.Builder().url(getUrl).get().build()
+    var xResp = client.newCall(request).execute()
+    var cResp = BitmapFactory.decodeStream(BufferedInputStream(xResp.body()?.byteStream()))
     return cResp
 }
 
